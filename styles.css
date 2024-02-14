@@ -1,24 +1,40 @@
   
-    body {  
-        font-family: Arial, sans-serif;  
-    }  
-      
-    table {  
-        width: 100%;  
-        border-collapse: collapse;  
-    }  
-      
-    th, td {  
-        border: 1px solid #ddd;  
-        padding: 8px;  
-        text-align: left;  
-    }  
-      
-    th {  
-        background-color: #f2f2f2;  
-    }  
-      
-    img {  
-        max-width: 100px;  
-        height: auto;  
-    }  
+body {  
+    font-family: Arial, sans-serif;  
+}  
+    
+table {  
+    width: 80%;  
+    border-collapse: collapse;  
+    line-height: normal; /* 默认情况下，行高会根据内容自动调整 */
+    border-spacing: 20px; /* 设置列间距为10像素 */
+}  
+    
+th, td {  
+    border: 1px solid #ddd;  
+    padding: 8px;  
+    text-align: left;  
+}  
+    
+th {  
+    background-color: #f2f2f2;  
+}  
+
+td{
+    border-spacing: 20px; /* 设置列间距为10像素 */
+}
+    
+img {  
+    max-width: 100px;  
+    height: auto;  
+}  
+
+    /* 对于奇数行（第1、3、5...）应用特定的样式 */
+table tr:nth-child(odd) {
+    margin-bottom: 20px; /* 设置奇数行与其后面行之间的间距 */
+}
+ 
+/* 对于偶数行（第2、4、6...）也应用特定的样式 */
+table tr:nth-child(even) {
+    margin-top: 5px; /* 设置偶数行与其前面行之间的间距 */
+}
