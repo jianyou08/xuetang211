@@ -16,74 +16,66 @@
             .then(response => response.json())  
             .then(data => {  
                 if (data.length > 0) {  
-                    const table = document.createElement("table");  
+                    const table = document.createElement("table"); 
+                    table.className = "itemsTable"
                     const thead = document.createElement("thead");  
                     const tbody = document.createElement("tbody");  
-                      
-                    // 创建表头  
-                    // const headerRow = document.createElement("tr");  
-                    // const headers = ["标题", "描述信息", "主图"];  
-                    // headers.forEach(headerText => {  
-                    //     const th = document.createElement("th");  
-                    //     th.textContent = headerText;  
-                    //     headerRow.appendChild(th);  
-                    // });  
-                    // thead.appendChild(headerRow);  
-                    // table.appendChild(thead);   
+
+                    const tr = document.createElement("tr");
+                    for (let k = 0; k < itemsPerRow; k++, k++) {
+                        const th = document.createElement("th");
+                        th.style = "width: " + 100 / itemsPerRow + "%;";
+                        tr.appendChild(th);
+                    }
+                    thead.appendChild(tr);
+                    table.appendChild(thead);
 
                     for (let i = 0; i < data.length;) {
                         let imgRow = document.createElement("tr");  
-                        let descRow = document.createElement("tr"); 
                         tbody.appendChild(imgRow);  
-                        tbody.appendChild(descRow);  
                         for (let j = 0; j < itemsPerRow && i < data.length; j++, i++) {
                             item = data[i];
-                            const tdImg = document.createElement("td");  
+                            const td = document.createElement("td");
+
+                            let itemDiv = document.createElement("div");   
+                            let imgDiv = document.createElement("div"); 
                             const img = document.createElement("img");  
                             img.src = item.img;  
                             img.alt = item.title;  
-                            tdImg.appendChild(img);  
-                            imgRow.appendChild(tdImg); 
+                            imgDiv.appendChild(img);
+                            itemDiv.appendChild(imgDiv)
 
-                            const tdDesc = document.createElement("td");  
-                            tdDesc.textContent = item.desc;  
-                            descRow.appendChild(tdDesc);   
+                            const descDiv = document.createElement("div");  
+                            descDiv.textContent = item.title;
+                            if(item.desc) {
+                                descDiv.textContent = item.title + '：' + item.desc;
+                            }     
+                            itemDiv.appendChild(descDiv);
+
+                            td.appendChild(itemDiv)
+
+                            imgRow.appendChild(td); 
+
+                            
                         }
-                    }
-  
-                    // data.forEach((item, index) => {  
-                    //     if (itemsInCurrentRow >= itemsPerRow) {  
-                    //         // 开始新的一行  
-                    //         currentRow = document.createElement("tr");  
-                    //         tbody.appendChild(currentRow);  
-                    //         itemsInCurrentRow = 0;  
-                    //     }  
-  
-                    //     const tdTitle = document.createElement("td");  
-                    //     tdTitle.textContent = item.title;  
-                    //     currentRow.appendChild(tdTitle);  
-  
-                    //     const tdDesc = document.createElement("td");  
-                    //     tdDesc.textContent = item.desc;  
-                    //     currentRow.appendChild(tdDesc);  
-  
-                    //     const tdImg = document.createElement("td");  
-                    //     const img = document.createElement("img");  
-                    //     img.src = item.img;  
-                    //     img.alt = item.title;  
-                    //     tdImg.appendChild(img);  
-                    //     currentRow.appendChild(tdImg);  
+                        // let imgRow = document.createElement("tr");  
+                        // let descRow = document.createElement("tr"); 
+                        // tbody.appendChild(imgRow);  
+                        // tbody.appendChild(descRow);  
+                        // for (let j = 0; j < itemsPerRow && i < data.length; j++, i++) {
+                        //     item = data[i];
+                        //     const tdImg = document.createElement("td");  
+                        //     const img = document.createElement("img");  
+                        //     img.src = item.img;  
+                        //     img.alt = item.title;  
+                        //     tdImg.appendChild(img);  
+                        //     imgRow.appendChild(tdImg); 
 
-                    //     const tdTitle = document.createElement("td");  
-                    //     tdTitle.textContent = item.title;  
-                    //     currentRow.appendChild(tdTitle);  
-  
-                    //     const tdDesc = document.createElement("td");  
-                    //     tdDesc.textContent = item.desc;  
-                    //     currentRow.appendChild(tdDesc);  
-  
-                    //     itemsInCurrentRow++;  
-                    // });  
+                        //     const tdDesc = document.createElement("td");  
+                        //     tdDesc.textContent = item.desc;  
+                        //     descRow.appendChild(tdDesc);   
+                        // }
+                    }
   
                     table.appendChild(tbody);  
                     contentDiv.appendChild(table);  
