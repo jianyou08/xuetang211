@@ -8,7 +8,17 @@
     {  
         "title": "Yakka.Dee动画1-4季",  
         "desc": "含视频和音频",  
-        "img": "data/imgs/Yakka.Dee.png"  
+        "img": "data/imgs/Yakka.Dee.png",
+        "info":"",
+        "detail": {
+            "info": "详细信息",
+            "images": [],
+            "extTags":{
+                "视频信息":"高清",
+                "内容":"全4季"
+            }
+        }
+
     },
     {  
         "title": "English Singsing",  
